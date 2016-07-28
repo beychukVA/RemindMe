@@ -10,7 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
-import beichuk.ua.remaindme.adapter.TabsPagerFragmentAdapter;
+import beichuk.ua.remaindme.adapter.TabsFragmentAdapter;
 import beychuk.ua.remindme.R;
 
 public class MainActivity extends AppCompatActivity
@@ -79,7 +79,7 @@ public class MainActivity extends AppCompatActivity
     private void initTabs()
     {
         viewPager = (ViewPager)findViewById(R.id.viewPager);
-        TabsPagerFragmentAdapter adapter = new TabsPagerFragmentAdapter(getSupportFragmentManager());
+        TabsFragmentAdapter adapter = new TabsFragmentAdapter(this, getSupportFragmentManager());
         viewPager.setAdapter(adapter);
         TabLayout tabLayout = (TabLayout)findViewById(R.id.tabLayout);
         tabLayout.setupWithViewPager(viewPager);
