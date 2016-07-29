@@ -9,7 +9,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import beichuk.ua.remaindme.adapter.RemindListAdapter;
@@ -19,13 +18,16 @@ import beychuk.ua.remindme.R;
 public class HistoryFragment extends AbstractTabFragment
 {
     private static final int LAYOUT = R.layout.fragment_history;
+    private List<RemindDTO> data;
+    private RemindListAdapter adapter;
 
-    public static HistoryFragment getInstance(Context context)
+    public static HistoryFragment getInstance(Context context, List<RemindDTO> data)
     {
         Bundle bundle = new Bundle();
         HistoryFragment fragment = new HistoryFragment();
         fragment.setArguments(bundle);
         fragment.setContext(context);
+        fragment.setData(data);
         fragment.setTitle(context.getString(R.string.tab_item_history));
         return fragment;
     }
@@ -37,24 +39,24 @@ public class HistoryFragment extends AbstractTabFragment
         view = inflater.inflate(LAYOUT, container, false);
         RecyclerView recyclerView = (RecyclerView)view.findViewById(R.id.recycleView);
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
-        recyclerView.setAdapter(new RemindListAdapter(createMockRemindListData()));
+        adapter = new RemindListAdapter(data);
+        recyclerView.setAdapter(adapter);
         return view;
-    }
-
-    private List<RemindDTO> createMockRemindListData()
-    {
-        List<RemindDTO> data = new ArrayList<>();
-        data.add(new RemindDTO("Item 1"));
-        data.add(new RemindDTO("Item 2"));
-        data.add(new RemindDTO("Item 3"));
-        data.add(new RemindDTO("Item 4"));
-        data.add(new RemindDTO("Item 5"));
-        data.add(new RemindDTO("Item 6"));
-        return data;
     }
 
     public void setContext(Context context)
     {
         this.context = context;
+    }
+
+    public void setData(List<RemindDTO> data)
+    {
+        this.data = data;
+    }
+
+    public void refreshData(List<RemindDTO> data)
+    {
+        adapter.setData(data);
+        adapter.notifyDataSetChanged();
     }
 }
