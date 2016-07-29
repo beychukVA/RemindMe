@@ -15,7 +15,6 @@ public class TodoFragment extends AbstractTabFragment
 
     public static TodoFragment getInstance(Context context)
     {
-        context = context;
         Bundle bundle = new Bundle();
         TodoFragment fragment = new TodoFragment();
         fragment.setArguments(bundle);

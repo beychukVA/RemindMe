@@ -15,7 +15,6 @@ public class BirthdaysFragment extends AbstractTabFragment
 
     public static BirthdaysFragment getInstance(Context context)
     {
-        context = context;
         Bundle bundle = new Bundle();
         BirthdaysFragment fragment = new BirthdaysFragment();
         fragment.setArguments(bundle);

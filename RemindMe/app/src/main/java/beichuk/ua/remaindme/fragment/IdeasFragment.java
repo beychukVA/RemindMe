@@ -15,7 +15,6 @@ public class IdeasFragment extends AbstractTabFragment
 
     public static IdeasFragment getInstance(Context context)
     {
-        context = context;
         Bundle bundle = new Bundle();
         IdeasFragment fragment = new IdeasFragment();
         fragment.setArguments(bundle);
